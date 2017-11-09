@@ -1,15 +1,15 @@
 
 // Array that holds words for computer to choose from //
-
 var words = ["This", "Is", "A", "Test"];
 var wordToGuess;
+var displayWord;
 
 // Wins and losses variable //
 var wins = 0;
 var loses = 0;
 
 // Guesses left and guessed letters //
-var guessesLeft, guessedLetters, wordToGuess;
+var guessesLeft, guessedLetters =[];
 
 //Display Variables 
 	
@@ -18,7 +18,7 @@ var guessesLeft, guessedLetters, wordToGuess;
   var guessLeft = document.getElementById("guessesLeft");
   var letterGuessed = document.getElementById("guessed");
   var mysWord = document.getElementById("theWord");
-  
+
 resetGame();
 display();
 
@@ -26,7 +26,10 @@ display();
 function resetGame() {
 	guessesLeft = 10;
 	guessedWords = [];
-	wordToGuess = words[Math.floor(Math.random() * words.length)];    // Computer randomly selects a word from the array //
+	displayWord = wordToGuess[Math.floor(Math.random() * wordToGuess.length)];
+	for (var i= 0; i < wordToGuess.length; i++){
+		displayWord[i] ="_ ";
+	}	
 	console.log("Word to guess: " + wordToGuess);  
 
 }
@@ -35,10 +38,12 @@ function resetGame() {
 function display() {
   winsP.innerHTML = wins;
   losesP.innerHTML = loses;
-  mysWord.innerHTML = theWord;
+  mysWord.innerHTML = displayWord;
   guessLeft.innerHTML = guessesLeft;
   letterGuessed.innerHTML = guessedLetters.join(",");
 }
+
+// Trying to rewrite random selected word 
 
 
 // Computer displays the word as underscores //
