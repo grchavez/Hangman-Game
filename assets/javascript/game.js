@@ -11,26 +11,18 @@ var loses = 0;
 // Guesses left and guessed letters //
 var guessesLeft, guessedLetters, wordToGuess;
 
+//Display Variables 
+	
+  var winsP = document.getElementById("wins");
+  var losesP = document.getElementById("loses");
+  var guessLeft = document.getElementById("guessesLeft");
+  var letterGuessed = document.getElementById("guessed");
+  var mysWord = document.getElementById("theWord");
+  
 resetGame();
 display();
 
-
-// Display to HTML Function //
-function display() {
-  var winsP = document.getElementById("wins");
-  var losesP = document.getElementById("loses");
-  var guessLeft = document.getElementById("guessLeft");
-  var letterGuessed = document.getElementById("guessed");
-  var mysWord = document.getElementById("theWord");
-  winsP.innerHTML = wins;
-  losesP.innerHTML = loses;
-  mysWord.innerHTML = theWord;
-  guessLeft.innerHTML = guessesLeft;
-  letterGuessed.innerHTML = guessedLetters.join(",");
-}
-
 // Reset Function //
-
 function resetGame() {
 	guessesLeft = 10;
 	guessedWords = [];
@@ -38,6 +30,16 @@ function resetGame() {
 	console.log("Word to guess: " + wordToGuess);  
 
 }
+
+// Display to HTML Function //
+function display() {
+  winsP.innerHTML = wins;
+  losesP.innerHTML = loses;
+  mysWord.innerHTML = theWord;
+  guessLeft.innerHTML = guessesLeft;
+  letterGuessed.innerHTML = guessedLetters.join(",");
+}
+
 
 // Computer displays the word as underscores //
 
