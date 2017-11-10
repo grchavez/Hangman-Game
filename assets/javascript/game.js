@@ -26,11 +26,11 @@ display();
 function resetGame() {
 	guessesLeft = 10;
 	guessedWords = [];
-	displayWord = wordToGuess[Math.floor(Math.random() * wordToGuess.length)];
-	for (var i= 0; i < wordToGuess.length; i++){
-		displayWord[i] ="_ ";
+	displayWord = words[Math.floor(Math.random() * words.length)];
+	for (var i= 0; i < displayWord.length; i++){
+		mysWord.innerHTML += "_ ";
 	}	
-	console.log("Word to guess: " + wordToGuess);  
+	console.log("Word to guess: " + displayWord);  
 
 }
 
@@ -38,17 +38,18 @@ function resetGame() {
 function display() {
   winsP.innerHTML = wins;
   losesP.innerHTML = loses;
-  mysWord.innerHTML = displayWord;
   guessLeft.innerHTML = guessesLeft;
   letterGuessed.innerHTML = guessedLetters.join(",");
 }
 
-// Trying to rewrite random selected word 
-
-
-// Computer displays the word as underscores //
-
 // User guesses letter within the word //
+
+document.onkeyup = function(){
+	var guess = event.key;
+	if (guess == displayWord.indexOf(guess)){
+		alert("Nice");
+	}
+}
 
 	// IF THE USER GUESSES THE CORRECT LETTER //
 		// The underscore is replaced with the correct letter //
