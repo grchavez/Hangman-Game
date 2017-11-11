@@ -1,8 +1,8 @@
 
 // Array that holds words for computer to choose from //
-var words = ["This", "Is", "A", "Test"];
+var words = ["apple bottom jeans"];
 var wordToGuess;
-var displayWord;
+var displayWord = words[Math.floor(Math.random() * words.length)];
 
 // Wins and losses variable //
 var wins = 0;
@@ -26,7 +26,6 @@ display();
 function resetGame() {
 	guessesLeft = 10;
 	guessedWords = [];
-	displayWord = words[Math.floor(Math.random() * words.length)];
 	for (var i= 0; i < displayWord.length; i++){
 		mysWord.innerHTML += "_ ";
 	}	
@@ -46,10 +45,25 @@ function display() {
 
 document.onkeyup = function(){
 	var guess = event.key;
-	if (guess == displayWord.indexOf(guess)){
+	guessedLetters.push(guess);
+	var underScore = " ";
+	if (displayWord.indexOf(guess) > -1){
+		for (var i= 0; i < displayWord.length; i++){
+		if (guessedLetters.indexOf(displayWord.charAt(i)) != -1) {
+		underScore += displayWord.charAt(i);
+		} 		
+		else {
+		underScore += '_ ';
+		}
+		}
+		console.log('display', underScore);
 		alert("Nice");
+		console.log(guess);
 	}
 }
+
+// 
+
 
 	// IF THE USER GUESSES THE CORRECT LETTER //
 		// The underscore is replaced with the correct letter //
